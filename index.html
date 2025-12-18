@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACS Research Registry - 2023 ESC Guidelines</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 ACS Research Registry Form</h1>
+            <p class="subtitle">Based on 2023 ESC Guidelines for Acute Coronary Syndrome Management</p>
+        </header>
+
+        <div id="alert" class="alert"></div>
+
+        <form id="acsForm">
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">👤</span>Patient Demographics</h2>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="mrNumber" class="required">MR Number</label>
+                        <input type="text" id="mrNumber" name="mrNumber" placeholder="Enter Medical Record Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="patientName" class="required">Patient Name</label>
+                        <input type="text" id="patientName" name="patientName" placeholder="Full Name" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob" class="required">Date of Birth</label>
+                        <input type="date" id="dob" name="dob" required>
+                        <div class="calc-age" id="ageDisplay"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="required">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input type="tel" id="contact" name="contact" placeholder="Phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Email address">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">⚡</span>ACS Presentation (ESC Classification)</h2>
+                
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label class="required">Type of Acute Coronary Syndrome</label>
+                        <div class="radio-group">
+                            <div class="radio-item">
+                                <input type="radio" id="stemi" name="acsType" value="STEMI" required>
+                                <label for="stemi">STEMI (ST-Elevation Myocardial Infarction)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="nstemi" name="acsType" value="NSTEMI" required>
+                                <label for="nstemi">NSTEMI (Non-ST-Elevation Myocardial Infarction)</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" id="ua" name="acsType" value="UA" required>
+                                <label for="ua">UA (Unstable Angina)</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="symptomOnset" class="required">Date &amp; Time of Symptom Onset</label>
+                        <input type="date" id="symptomOnset" name="symptomOnset" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="symptomTime">Time of Onset (HH:MM)</label>
+                        <input type="time" id="symptomTime" name="symptomTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="hospitalization" class="required">Date of Hospital Admission</label>
+                        <input type="date" id="hospitalization" name="hospitalization" required>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Clinical Presentation</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="chestPain" name="symptom" value="chest_pain">
+                                <label for="chestPain">Chest Pain/Discomfort</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dyspnea" name="symptom" value="dyspnea">
+                                <label for="dyspnea">Dyspnea (Shortness of Breath)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="nausea" name="symptom" value="nausea">
+                                <label for="nausea">Nausea/Vomiting</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="palpitations" name="symptom" value="palpitations">
+                                <label for="palpitations">Palpitations</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="syncope" name="symptom" value="syncope">
+                                <label for="syncope">Syncope/Presyncope</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="atypical" name="symptom" value="atypical">
+                                <label for="atypical">Atypical Symptoms</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">⚠️</span>Established Risk Factors</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Cardiovascular Risk Factors</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_hypertension" name="riskFactor" value="hypertension">
+                                <label for="rf_hypertension">Hypertension (on medication or BP ≥140/90)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_diabetes" name="riskFactor" value="diabetes">
+                                <label for="rf_diabetes">Diabetes Mellitus</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_dyslipidemia" name="riskFactor" value="dyslipidemia">
+                                <label for="rf_dyslipidemia">Dyslipidemia (Elevated LDL/Total Cholesterol)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_smoking" name="riskFactor" value="smoking">
+                                <label for="rf_smoking">Smoking (Current or within 1 year)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_obesity" name="riskFactor" value="obesity">
+                                <label for="rf_obesity">Obesity (BMI ≥30)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_family" name="riskFactor" value="family_history">
+                                <label for="rf_family">Family History of Premature CAD</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="rf_sedentary" name="riskFactor" value="sedentary">
+                                <label for="rf_sedentary">Sedentary Lifestyle</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🏥</span>Comorbidities &amp; Medical History</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Significant Medical History</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_cad" name="medHistory" value="prior_cad">
+                                <label for="hx_cad">Prior Coronary Artery Disease / Previous MI</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_pci" name="medHistory" value="prior_pci">
+                                <label for="hx_pci">Previous PCI (Percutaneous Coronary Intervention)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_cabg" name="medHistory" value="prior_cabg">
+                                <label for="hx_cabg">Previous CABG (Coronary Artery Bypass Grafting)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_heart_failure" name="medHistory" value="heart_failure">
+                                <label for="hx_heart_failure">Heart Failure (with reduced/preserved EF)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_afib" name="medHistory" value="atrial_fibrillation">
+                                <label for="hx_afib">Atrial Fibrillation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_stroke" name="medHistory" value="prior_stroke">
+                                <label for="hx_stroke">Prior Stroke/TIA</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_ckd" name="medHistory" value="chronic_kidney_disease">
+                                <label for="hx_ckd">Chronic Kidney Disease</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_copd" name="medHistory" value="copd">
+                                <label for="hx_copd">COPD / Chronic Lung Disease</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="hx_cancer" name="medHistory" value="cancer_history">
+                                <label for="hx_cancer">Active Cancer or Cancer Treatment</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🩺</span>Physical Examination on Admission</h2>
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="sbp" class="required">Systolic BP (mmHg)</label>
+                        <input type="number" id="sbp" name="sbp" placeholder="120" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dbp" class="required">Diastolic BP (mmHg)</label>
+                        <input type="number" id="dbp" name="dbp" placeholder="80" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hr" class="required">Heart Rate (bpm)</label>
+                        <input type="number" id="hr" name="hr" placeholder="70" required>
+                    </div>
+                </div>
+
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="rr" class="required">Respiratory Rate (/min)</label>
+                        <input type="number" id="rr" name="rr" placeholder="16" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="temp" class="required">Temperature (°C)</label>
+                        <input type="number" id="temp" name="temp" step="0.1" placeholder="36.5" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bmi" class="required">BMI (kg/m²)</label>
+                        <input type="number" id="bmi" name="bmi" step="0.1" placeholder="24.5" required>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Clinical Signs on Examination</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sign_pulmonary_edema" name="clinicalSign" value="pulmonary_edema">
+                                <label for="sign_pulmonary_edema">Pulmonary Edema (Crackles/Rales)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sign_new_murmur" name="clinicalSign" value="new_murmur">
+                                <label for="sign_new_murmur">New Murmur (Possible Papillary Muscle Rupture)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sign_cardiogenic_shock" name="clinicalSign" value="cardiogenic_shock">
+                                <label for="sign_cardiogenic_shock">Signs of Cardiogenic Shock</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="sign_peripheral_edema" name="clinicalSign" value="peripheral_edema">
+                                <label for="sign_peripheral_edema">Peripheral Edema</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">📊</span>ECG Findings on Admission</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label for="ecg_rhythm">ECG Rhythm</label>
+                        <select id="ecg_rhythm" name="ecg_rhythm">
+                            <option value="">Select Rhythm</option>
+                            <option value="sinus">Sinus Rhythm</option>
+                            <option value="atrial_fibrillation">Atrial Fibrillation</option>
+                            <option value="atrial_flutter">Atrial Flutter</option>
+                            <option value="svt">Supraventricular Tachycardia</option>
+                            <option value="bradycardia">Bradycardia</option>
+                            <option value="vt">Ventricular Tachycardia</option>
+                            <option value="vf">Ventricular Fibrillation</option>
+                            <option value="asystole">Asystole</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>ST Changes</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="st_elevation" name="stChange" value="st_elevation">
+                                <label for="st_elevation">ST Elevation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="st_depression" name="stChange" value="st_depression">
+                                <label for="st_depression">ST Depression</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="t_wave_inversion" name="stChange" value="t_wave_inversion">
+                                <label for="t_wave_inversion">T Wave Inversion</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="t_wave_pseudonormalization" name="stChange" value="t_wave_pseudonormalization">
+                                <label for="t_wave_pseudonormalization">T Wave Pseudonormalization</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="no_ecg_changes" name="stChange" value="no_changes">
+                                <label for="no_ecg_changes">No Significant ECG Changes</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label>Affected Territory (if ST elevation or significant changes)</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="territory_anterior" name="territory" value="anterior">
+                                <label for="territory_anterior">Anterior</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="territory_inferior" name="territory" value="inferior">
+                                <label for="territory_inferior">Inferior</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="territory_lateral" name="territory" value="lateral">
+                                <label for="territory_lateral">Lateral</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="territory_posterior" name="territory" value="posterior">
+                                <label for="territory_posterior">Posterior</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="territory_rv" name="territory" value="right_ventricular">
+                                <label for="territory_rv">Right Ventricular</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🧪</span>Biomarkers &amp; Laboratory Tests</h2>
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="troponin_baseline">HS Troponin (ng/L) - Baseline</label>
+                        <input type="number" id="troponin_baseline" name="troponin_baseline" step="0.01" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <label for="troponin_3h">(ng/L) - 3-hour change</label>
+                        <input type="number" id="troponin_3h" name="troponin_3h" step="0.01" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <label for="ckmbass">CK-MB (ng/mL)</label>
+                        <input type="number" id="ckmbass" name="ckmbass" step="0.01" placeholder="Enter value">
+                    </div>
+                </div>
+                </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🖼️</span>Cardiac Imaging</h2>
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="lvef">LVEF (%)</label>
+                        <input type="number" id="lvef" name="lvef" placeholder="50" min="0" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="lvesv">LVESV (mL)</label>
+                        <input type="number" id="lvesv" name="lvesv" step="0.1" placeholder="Enter value">
+                    </div>
+                    <div class="form-group">
+                        <label for="lvedv">LVEDV (mL)</label>
+                        <input type="number" id="lvedv" name="lvedv" step="0.1" placeholder="Enter value">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🔍</span>Coronary Angiography &amp; Intervention</h2>
+                <div class="form-row full">
+                    <div class="form-group">
+                        <label class="required">Culprit Lesion Location</label>
+                        <select id="culpritVessel" name="culpritVessel" required>
+                            <option value="">Select Culprit Vessel</option>
+                            <option value="lad">LAD (Left Anterior Descending)</option>
+                            <option value="lcx">LCx (Left Circumflex)</option>
+                            <option value="rca">RCA (Right Coronary Artery)</option>
+                            <option value="lmca">LMCA (Left Main Coronary Artery)</option>
+                            <option value="graft">Saphenous Vein/Arterial Graft</option>
+                            <option value="no_culprit">No Obstructive Coronary Lesion (MINOCA)</option>
+                        </select>
+                    </div>
+                </div>
+                </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">📈</span>Risk Stratification</h2>
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="grace">GRACE Risk Score</label>
+                        <input type="number" id="grace" name="grace" min="0" max="300" placeholder="0-300">
+                    </div>
+                    <div class="form-group">
+                        <label for="timi_nstemi">TIMI Risk Score (NSTEMI)</label>
+                        <input type="number" id="timi_nstemi" name="timi_nstemi" min="0" max="7" placeholder="0-7">
+                    </div>
+                    <div class="form-group">
+                        <label for="precise_dapt">PRECISE-DAPT Score</label>
+                        <input type="number" id="precise_dapt" name="precise_dapt" placeholder="Enter score">
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title"><span class="section-icon">🏠</span>Discharge Information</h2>
+                <div class="form-row three-col">
+                    <div class="form-group">
+                        <label for="dischargeDate">Discharge Date</label>
+                        <input type="date" id="dischargeDate" name="dischargeDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="hospitalizationLength">Length of Stay (days)</label>
+                        <input type="number" id="hospitalizationLength" name="hospitalizationLength" readonly>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="reset" class="btn-secondary">Clear Form</button>
+                <button type="submit" class="btn-primary">Save Registry Entry</button>
+            </div>
+        </form>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
